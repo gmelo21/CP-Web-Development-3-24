@@ -59,24 +59,13 @@
   justify-content: space-between;
 }
 
-.card-button {
-  margin-top: 5px;
-  background-color: var(--ourGreen);
-  border: none;
-  color: var(--ourWhite);
-  font-weight: 600;
-}
-
-.card-button:hover {
-  background-color: var(--ourActiveGreen);
-}
-
-.card-button:hover {
-  background-color: var(--ourActiveGreen);
-}
-
 #off-button {
   background-color: var(--ourBlackButton);
   color: gray;
   cursor: auto;
+  pointer-events: none;
+}
+
+#off-image {
+  filter: grayscale(100%);
 }

@@ -74,7 +74,7 @@ nav ul li a:active {
   background-color: var(--ourActiveGreen);
 }
 
-.dropdown-basic:active {
+#bootstrap-overrides .dropdown-basic:active {
   background-color: var(--ourFocusGreen);
 }
 

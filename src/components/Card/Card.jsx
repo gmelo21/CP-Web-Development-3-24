@@ -6,12 +6,22 @@ import "./card.css";
 const CustomCard = (props) => {
   return (
     <Card className="card">
-      <Card.Img
-        className="card-img"
-        variant="top"
-        src={props.productImage}
-        alt={props.imageAlt}
-      />
+      {props.onStock ? (
+        <Card.Img
+          className="card-img"
+          variant="top"
+          src={props.productImage}
+          alt={props.imageAlt}
+        />
+      ) : (
+        <Card.Img
+          id="off-image"
+          className="card-img"
+          variant="top"
+          src={props.productImage}
+          alt={props.imageAlt}
+        />
+      )}
       <Card.Body className="card-body">
         <Card.Title className="card-name">{props.name}</Card.Title>
         <Card.Text className="card-description">{props.productDesc}</Card.Text>
@@ -24,7 +34,7 @@ const CustomCard = (props) => {
           <h4 className="card-price">${props.value}</h4>
         </div>
         {props.onStock ? (
-          <Button className="dropdown-basic" variant="primary">
+          <Button className="dropdown-basic" variant="success">
             Buy it
           </Button>
         ) : (

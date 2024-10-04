@@ -20,7 +20,7 @@ const Home = () => {
         </p>
         <div className="card-section">
           <Card
-            productImage={product1}
+            productImage={product3}
             imageAlt="Sample Product"
             name="Product 1"
             productDesc="This is a sample description for Product 1."
@@ -28,6 +28,7 @@ const Home = () => {
             value={19.99}
           />
           <Card
+            productImage={product4}
             imageAlt="Sample Product"
             name="Product 2"
             productDesc="This is a sample description for Product 2."
@@ -35,7 +36,7 @@ const Home = () => {
             value={29.99}
           />
           <Card
-            productImage={product3}
+            productImage={product1}
             imageAlt="Sample Product"
             name="Product 3"
             productDesc="This is a sample description for Product 3."
@@ -59,6 +60,7 @@ const Home = () => {
             value={59.99}
           />
           <Card
+            productImage={product3}
             imageAlt="Sample Product"
             name="Product 6"
             productDesc="This is a sample description for Product 6."
