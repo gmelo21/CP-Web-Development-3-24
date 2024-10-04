@@ -1,0 +1,65 @@
+.slideshow {
+  position: relative;
+  max-width: 100%;
+  background-color: var(--ourBlackButton);
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 0, 0, 0.2),
+    var(--ourBlackButton) 15%,
+    var(--ourBlackButton) 85%,
+    rgb(0, 0, 0, 0.2)
+  );
+}
+
+.slideImage {
+  display: flex;
+  overflow: hidden;
+  padding: 0px 15%;
+}
+
+.slideImage img {
+  transition: translate 600ms ease-in-out;
+  width: 100%;
+  object-fit: contain;
+  margin-right: 100%;
+  mask-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0),
+    rgb(0, 0, 0) 0.5%,
+    rgba(0, 0, 0, 1) 99.5%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.nextSlide {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--ourWhite);
+  width: 3%;
+  height: 12%;
+  min-width: 25px;
+  min-height: 25px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--ourGreen);
+  transition: 0.3s;
+}
+
+.nextSlide:hover {
+  background-color: var(--ourActiveGreen);
+}
+
+.nextSlide:active {
+    background-color: var(--ourFocusGreen);
+  }
+
+.nextSlide:first-of-type {
+  left: 11%;
+}
+
+.nextSlide:last-of-type {
+  right: 11%;
+}
