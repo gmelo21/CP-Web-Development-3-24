@@ -1,0 +1,90 @@
+nav {
+  display: flex;
+  background-color: var(--ourBlack);
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  padding-bottom: 10px;
+  width: 100%;
+  z-index: 1;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style: none;
+  padding-top: 8px;
+}
+
+nav ul li a {
+  margin: 0px 10px;
+  width: 90px;
+  padding: 5px 10px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--ourWhite);
+  border-radius: 10px;
+  transition: 0.2s;
+  background-color: var(--ourBlackButton);
+}
+
+nav ul li a:hover {
+  background-color: var(--ourWhite);
+  color: var(--ourBlack);
+}
+
+#logo {
+  border-radius: 0px 0px 10px 10px;
+  padding: 0px 10px;
+  background-color: var(--ourGreen);
+  color: var(--ourWhite);
+}
+
+#logo h1 {
+  margin-bottom: 2px; 
+}
+
+#dropdown-basic {
+  margin: 0px 10px;
+  width: 90px;
+  padding: 5px 10px;
+  display: inline-block;
+  text-align: center;
+  color: var(--ourWhite);
+  border-radius: 10px;
+  border: 0px solid;
+  transition: 0.2s;
+  margin-top: 8px;
+  margin-right: 20px;
+  background-color: var(--ourGreen);
+}
+
+#dropdown-basic:hover {
+  background-color: var(--ourActiveGreen);
+}
+
+#dropdown-basic:focus {
+  background-color: var(--ourFocusGreen);
+}
+
+#dropdown-menu  {
+  margin: 0px;
+  background-color: var(--ourBlackButton);
+  border: rgb(0, 0, 0, 0.5) solid 2px;
+}
+
+#dropdown-menu a {
+  transition: 0.2s;
+  color: var(--ourWhite);
+}
+
+#dropdown-menu a:hover {
+  background-color: var(--ourWhite) ;
+  color: var(--ourBlack);
+}
