@@ -1,13 +1,53 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import Slideshow from "../Slideshow/Slideshow";
+import Card from "../Card/Card";
 
 const Home = () => {
   return (
     <>
       <Slideshow />
       <section id="home-section">
-        <p>Os veículos elétricos (VEs) são uma alternativa promissora para a mobilidade sustentável, contribuindo para a redução das emissões de gases de efeito estufa. Ao substituírem motores a combustão, os VEs diminuem a poluição do ar nas cidades, melhorando a qualidade do ambiente urbano e a saúde pública. Com o avanço das fontes de energia renovável, a eletricidade utilizada para recarregar esses veículos tende a ser cada vez mais limpa, amplificando seus benefícios ambientais e promovendo um futuro mais sustentável.</p>
+        <p id="home-description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
+          corrupti? Voluptatem, quasi repudiandae voluptates odit aliquid
+          temporibus labore ipsa impedit dolorum necessitatibus quibusdam
+          blanditiis! Animi corporis itaque ipsam voluptas quidem! Lorem, ipsum
+          dolor sit amet consectetur adipisicing elit. Dolore praesentium in
+          explicabo, voluptates odio optio rem nemo adipisci impedit? Harum
+          corporis quisquam quibusdam nam assumenda eos mollitia quod ipsam
+          suscipit?
+        </p>
+        <div className="card-section">
+          <Card
+            imageAlt="Sample Product"
+            name="Product 1"
+            productDesc="This is a sample description for Product 1."
+            onStock={true}
+            value={29.99}
+          />
+          <Card
+            imageAlt="Sample Product"
+            name="Product 1"
+            productDesc="This is a sample description for Product 1."
+            onStock={false}
+            value={29.99}
+          />
+          <Card
+            imageAlt="Sample Product"
+            name="Product 1"
+            productDesc="This is a sample description for Product 1."
+            onStock={true}
+            value={29.99}
+          />
+          <Card
+            imageAlt="Sample Product"
+            name="Product 1"
+            productDesc="This is a sample description for Product 1."
+            onStock={true}
+            value={29.99}
+          />
+        </div>
       </section>
     </>
   );

@@ -40,8 +40,8 @@
   color: var(--ourWhite);
   width: 3%;
   height: 12%;
-  min-width: 25px;
-  min-height: 25px;
+  min-width: 35px;
+  min-height: 35px;
   padding: 10px;
   border-radius: 5px;
   background-color: var(--ourGreen);
