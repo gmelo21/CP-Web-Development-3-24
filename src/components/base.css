@@ -1,0 +1,8 @@
+:root{
+    --ourGreen: rgb(25, 135, 84);
+    --ourActiveGreen: rgb(22, 119, 74);
+    --ourFocusGreen: rgb(18, 97, 60);
+    --ourWhite:rgb(245, 245, 245);
+    --ourBlack:rgb(20, 20, 20);
+    --ourBlackButton:rgba(34, 34, 34);
+}

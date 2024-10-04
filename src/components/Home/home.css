@@ -1,0 +1,13 @@
+#home-section { 
+    padding: 1% 10% 0%;
+    text-align: center;
+}
+
+#home-section p { 
+    background-color: rgb(25, 135, 84);
+    padding: 10px 40px;
+    border-radius: 10px;
+    color: var(--ourWhite);
+    font-weight: 400;
+    font-size: large;
+}
