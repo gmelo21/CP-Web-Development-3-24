@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <nav>
-      <div id="dropdown-basic" style={{ backgroundColor: 'transparent' }}></div>
+      <div className="dropdown-basic" style={{ backgroundColor: 'transparent' }}></div>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -23,7 +23,7 @@ const Header = () => {
         <li>
           <Link to="/products">Produtos</Link>
         </li>
-        <div id="logo">
+        <div className="logo">
           <h1>C-FREE</h1>
         </div>
         <li>
@@ -34,10 +34,10 @@ const Header = () => {
         </li>
       </ul>
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown.Toggle variant="success" className="dropdown-basic">
           Conta
         </Dropdown.Toggle>
-        <Dropdown.Menu id="dropdown-menu">
+        <Dropdown.Menu className="dropdown-menu">
           <Dropdown.Item href="#/action-1">Login</Dropdown.Item>
           <Dropdown.Item href="#/action-2">Cadastrar produto</Dropdown.Item>
           {isLoggedIn && (

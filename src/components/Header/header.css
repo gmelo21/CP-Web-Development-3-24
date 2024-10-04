@@ -39,18 +39,23 @@ nav ul li a:hover {
   color: var(--ourBlack);
 }
 
-#logo {
+nav ul li a:active {
+  background-color: var(--ourActiveWhite);
+  color: var(--ourBlack);
+}
+
+.logo {
   border-radius: 0px 0px 10px 10px;
   padding: 0px 10px;
   background-color: var(--ourGreen);
   color: var(--ourWhite);
 }
 
-#logo h1 {
-  margin-bottom: 2px; 
+.logo h1 {
+  margin-bottom: 2px;
 }
 
-#dropdown-basic {
+.dropdown-basic {
   margin: 0px 10px;
   width: 90px;
   padding: 5px 10px;
@@ -65,26 +70,30 @@ nav ul li a:hover {
   background-color: var(--ourGreen);
 }
 
-#dropdown-basic:hover {
+.dropdown-basic:hover {
   background-color: var(--ourActiveGreen);
 }
 
-#dropdown-basic:focus {
+.dropdown-basic:active {
   background-color: var(--ourFocusGreen);
 }
 
-#dropdown-menu  {
+.dropdown-menu {
   margin: 0px;
   background-color: var(--ourBlackButton);
   border: rgb(0, 0, 0, 0.5) solid 2px;
 }
 
-#dropdown-menu a {
+.dropdown-menu a {
   transition: 0.2s;
   color: var(--ourWhite);
 }
 
-#dropdown-menu a:hover {
-  background-color: var(--ourWhite) ;
+.dropdown-menu a:hover {
+  background-color: var(--ourWhite);
   color: var(--ourBlack);
+}
+
+.dropdown-menu a:active {
+  background-color: var(--ourActiveWhite);
 }

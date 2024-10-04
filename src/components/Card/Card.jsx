@@ -5,9 +5,9 @@ import "./card.css";
 
 const CustomCard = (props) => {
   return (
-    <Card class="card" style={{ width: "18rem" }}>
+    <Card className="card">
       <Card.Img
-        class="card-img"
+        className="card-img"
         variant="top"
         src={props.productImage}
         alt={props.imageAlt}
@@ -23,9 +23,15 @@ const CustomCard = (props) => {
           )}
           <h4 className="card-price">${props.value}</h4>
         </div>
-        <Button className="card-button" variant="primary">
-          Buy it
-        </Button>
+        {props.onStock ? (
+          <Button className="dropdown-basic" variant="primary">
+            Buy it
+          </Button>
+        ) : (
+          <Button id="off-button" className="dropdown-basic" variant="primary">
+            Buy it
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );

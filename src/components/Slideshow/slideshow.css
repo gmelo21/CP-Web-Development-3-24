@@ -9,6 +9,7 @@
     var(--ourBlackButton) 85%,
     rgb(0, 0, 0, 0.2)
   );
+  border-bottom: var(--ourBlack) solid 10px;
 }
 
 .slideImage {
@@ -53,8 +54,8 @@
 }
 
 .nextSlide:active {
-    background-color: var(--ourFocusGreen);
-  }
+  background-color: var(--ourFocusGreen);
+}
 
 .nextSlide:first-of-type {
   left: 11%;

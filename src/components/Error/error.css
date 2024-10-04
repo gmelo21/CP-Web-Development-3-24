@@ -16,7 +16,7 @@
   height: 100vh;
 }
 
-#error-section {
+.error-section {
   display: flex;
 
   flex-direction: column;
@@ -32,12 +32,12 @@
   );
 }
 
-#error-image {
+.error-image {
   margin-top: -2%;
   margin-bottom: 2%;
 }
 
-#error-section h1 {
+.error-section h1 {
   color: var(--ourBlack);
 }
 
