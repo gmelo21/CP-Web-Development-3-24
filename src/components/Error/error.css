@@ -1,0 +1,72 @@
+@keyframes pulse {
+  0% {
+    background-color: rgba(25, 135, 84, 0.6);
+  }
+  50% {
+    background-color: rgba(25, 135, 84, 0.4);
+  }
+  100% {
+    background-color: rgb(25, 135, 84, 0.6);
+  }
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#error-section {
+  display: flex;
+
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--ourWhite);
+  justify-content: center;
+  align-items: center;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 45%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+#error-image {
+  margin-top: -2%;
+  margin-bottom: 2%;
+}
+
+#error-section h1 {
+  color: var(--ourBlack);
+}
+
+.btn-outline-success {
+  margin-top: 2%;
+  padding: 6px 8px;
+  scale: 1.52;
+  border-width: 4px;
+  animation: pulse 3s infinite;
+}
+
+.btn-outline-success-link {
+  border-radius: 5px;
+  padding: 9px;
+  padding-bottom: 10px;
+  margin: 0px -9px;
+  background-color: rgba(255, 0, 0, 0);
+  text-transform: uppercase;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--ourBlack);
+  transition: 0.2s;
+}
+
+.btn-outline-success:hover > .btn-outline-success-link {
+  color: var(--ourWhite);
+  background-color: var(--ourGreen);
+}
+
+.btn-outline-success:active > .btn-outline-success-link {
+  background-color: var(--ourActiveGreen);
+}
