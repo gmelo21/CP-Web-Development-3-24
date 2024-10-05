@@ -1,8 +1,7 @@
 import "./about.css";
 import Accordion from "react-bootstrap/Accordion";
 import { IoLogoInstagram } from "react-icons/io";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
 function About() {

@@ -2,11 +2,10 @@ import "./footer.css";
 
 const Footer = () => {
   return (
-    <>
-      <footer>
-        <h6>Todos os direitos reservados. @ 2024</h6>
-      </footer>
-    </>
+    <footer>
+      <h6>All rights reserved. © 2024</h6>
+    </footer>
   );
 };
+
 export default Footer;

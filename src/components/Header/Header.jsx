@@ -11,7 +11,6 @@ const Header = () => {
     const checkLoginStatus = () => {
       setIsLoggedIn(sessionStorage.getItem("user") !== null);
     };
-
     checkLoginStatus();
   }, []);
 
@@ -34,8 +33,8 @@ const Header = () => {
 
   const handleDeleteAllProducts = () => {
     localStorage.removeItem("carros"); // Clear all products from localStorage
-    window.location.reload()
     alert("All products have been deleted!");
+    window.location.reload();
   };
 
   return (
@@ -67,17 +66,15 @@ const Header = () => {
             Login
           </Dropdown.Item>
           {isLoggedIn && (
-            <Dropdown.Item as={Link} to="/register-product">
-              Register Product
-            </Dropdown.Item>
-          )}
-          {isLoggedIn && (
-            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-          )}
-          {isLoggedIn && (
-            <Dropdown.Item onClick={handleDeleteAllProducts}>
-              Delete All Products
-            </Dropdown.Item>
+            <>
+              <Dropdown.Item as={Link} to="/register-product">
+                Register Product
+              </Dropdown.Item>
+              <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+              <Dropdown.Item onClick={handleDeleteAllProducts}>
+                Delete All Products
+              </Dropdown.Item>
+            </>
           )}
         </Dropdown.Menu>
       </Dropdown>

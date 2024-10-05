@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./registerproduct.css";
 
-const CadastrarProduto = () => {
+const RegisterProduct = () => {
   const navigate = useNavigate();
-  const [carros, setCarros] = useState([]);
-  const [novoCarro, setNovoCarro] = useState({
+  const [products, setProducts] = useState([]);
+  const [newProduct, setNewProduct] = useState({
     id: null,
-    nome: "",
-    preco: "",
-    fabricante: "",
+    name: "",
+    price: "",
+    manufacturer: "",
     productImage: "",
     productDesc: "",
     onStock: true,
@@ -17,37 +17,36 @@ const CadastrarProduto = () => {
   const [editingId, setEditingId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [carroToDelete, setCarroToDelete] = useState(null);
+  const [productToDelete, setProductToDelete] = useState(null);
 
   useEffect(() => {
-    // Load products from localStorage on component mount
-    const storedCarros = localStorage.getItem("carros");
-    if (storedCarros) {
-      setCarros(JSON.parse(storedCarros));
+    const storedProducts = localStorage.getItem("products");
+    if (storedProducts) {
+      setProducts(JSON.parse(storedProducts));
     }
   }, []);
 
-  const saveCarrosToLocalStorage = (carros) => {
-    localStorage.setItem("carros", JSON.stringify(carros));
+  const saveProductsToLocalStorage = (products) => {
+    localStorage.setItem("products", JSON.stringify(products));
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem("senha");
-    sessionStorage.removeItem("usuario");
-    alert("Saindo...");
+    sessionStorage.removeItem("password");
+    sessionStorage.removeItem("user");
+    alert("Logging out...");
     navigate("/");
   };
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setNovoCarro((prev) => ({
+    setNewProduct((prev) => ({
       ...prev,
       [name]:
         type === "checkbox"
           ? checked
           : type === "number"
           ? parseFloat(value)
-          : value, // Parse number input
+          : value,
     }));
   };
 
@@ -56,7 +55,7 @@ const CadastrarProduto = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setNovoCarro((prev) => ({ ...prev, productImage: reader.result }));
+        setNewProduct((prev) => ({ ...prev, productImage: reader.result }));
       };
       reader.readAsDataURL(file);
     }
@@ -64,60 +63,57 @@ const CadastrarProduto = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let updatedCarros;
+    let updatedProducts;
 
     if (editingId !== null) {
-      updatedCarros = carros.map((carro) =>
-        carro.id === editingId ? { ...novoCarro, id: editingId } : carro
+      updatedProducts = products.map((product) =>
+        product.id === editingId ? { ...newProduct, id: editingId } : product
       );
       setEditingId(null);
     } else {
-      updatedCarros = [...carros, { ...novoCarro, id: Date.now() }]; // Add new product
+      updatedProducts = [...products, { ...newProduct, id: Date.now() }];
     }
 
-    setCarros(updatedCarros);
-    saveCarrosToLocalStorage(updatedCarros); // Save to localStorage
+    setProducts(updatedProducts);
+    saveProductsToLocalStorage(updatedProducts);
 
-    // Reset the form after submission
-    setNovoCarro({
+    setNewProduct({
       id: null,
-      nome: "",
-      preco: "",
-      fabricante: "",
+      name: "",
+      price: "",
+      manufacturer: "",
       productImage: "",
       productDesc: "",
       onStock: true,
     });
 
-    // Optionally, you can navigate or give feedback here instead of redirecting
-    alert("Produto adicionado com sucesso!"); // Feedback for user
-
+    alert("Product added successfully!");
     navigate("/");
     setTimeout(() => {
       window.location.reload();
     }, 0);
   };
 
-  const handleEdit = (carro) => {
-    setNovoCarro(carro);
-    setEditingId(carro.id);
+  const handleEdit = (product) => {
+    setNewProduct(product);
+    setEditingId(product.id);
   };
 
-  const handleDelete = (carro) => {
-    setCarroToDelete(carro);
+  const handleDelete = (product) => {
+    setProductToDelete(product);
     setShowModal(true);
   };
 
   const confirmDelete = () => {
-    const updatedCarros = carros.filter((c) => c.id !== carroToDelete.id);
-    setCarros(updatedCarros);
-    saveCarrosToLocalStorage(updatedCarros); // Save to localStorage
-    setCarroToDelete(null);
+    const updatedProducts = products.filter((p) => p.id !== productToDelete.id);
+    setProducts(updatedProducts);
+    saveProductsToLocalStorage(updatedProducts);
+    setProductToDelete(null);
     setShowModal(false);
   };
 
   const cancelDelete = () => {
-    setCarroToDelete(null);
+    setProductToDelete(null);
     setShowModal(false);
   };
 
@@ -127,34 +123,34 @@ const CadastrarProduto = () => {
 
   return (
     <div className="registering-product-container">
-      <h1 className="registering-product-title">Cadastro de Produtos</h1>
+      <h1 className="registering-product-title">Product Registration</h1>
 
       <form className="registering-product-form" onSubmit={handleSubmit}>
         <input
           className="input"
-          name="nome"
-          value={novoCarro.nome}
+          name="name"
+          value={newProduct.name}
           onChange={handleInputChange}
-          placeholder="Nome"
+          placeholder="Name"
           required
         />
         <input
           className="input"
-          name="preco"
-          type="number" // Change type to 'number'
-          value={novoCarro.preco}
+          name="price"
+          type="number"
+          value={newProduct.price}
           onChange={handleInputChange}
-          placeholder="Preço"
+          placeholder="Price"
           required
-          min="0" // Optional: prevent negative numbers
-          step="0.01" // Optional: allow decimal numbers
+          min="0"
+          step="0.01"
         />
         <input
           className="input"
-          name="fabricante"
-          value={novoCarro.fabricante}
+          name="manufacturer"
+          value={newProduct.manufacturer}
           onChange={handleInputChange}
-          placeholder="Fabricante"
+          placeholder="Manufacturer"
           required
         />
         <input
@@ -167,7 +163,7 @@ const CadastrarProduto = () => {
         <input
           className="input"
           name="productDesc"
-          value={novoCarro.productDesc}
+          value={newProduct.productDesc}
           onChange={handleInputChange}
           placeholder="Product Description"
           required
@@ -176,17 +172,17 @@ const CadastrarProduto = () => {
           <input
             type="checkbox"
             name="onStock"
-            checked={novoCarro.onStock}
+            checked={newProduct.onStock}
             onChange={handleInputChange}
           />
           In Stock
         </label>
         <button type="submit" className="button">
-          Salvar
+          Save
         </button>
       </form>
     </div>
   );
 };
 
-export default CadastrarProduto;
+export default RegisterProduct;

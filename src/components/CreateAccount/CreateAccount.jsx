@@ -1,60 +1,44 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const user = () => {
-  /*Hook-useParams- é utilizado para receber paramentros(codigo) pela rota */
-  let { id } = useParams();
+const User = () => {
+  // Hook to receive parameters (id) from the route
+  const { id } = useParams();
 
-  /*Hook- useState- ele manipula o estado da variavel */
+  // State to manage user information
   const [users, setUsers] = useState({
     id,
     user: "",
     password: "",
   });
 
-  function showPassword() {
-    var x = document.getElementById("password-text");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
-
-  //Hook- useNavigate- redireciona para outro componente
   const navigate = useNavigate();
 
-  //criando a função handleChange
-  // (...)spreed- expande os valores antigos com o novo  isso sempre vai acontecer com array ou objeto
-  // evento target- captura o que foi digitado em um campo
-  //value{users.user} vai la no banco(json) e tras o user
-  //value{users.password} vai la no banco(json) e tras a password
+  const showPassword = () => {
+    const passwordField = document.getElementById("password-text");
+    passwordField.type = passwordField.type === "password" ? "text" : "password";
+  };
+
+  // Handle input changes
   const handleChange = (e) => {
     setUsers({ ...users, [e.target.name]: e.target.value });
   };
 
-  //criando uma variavel method ara post edit
-  let metodo = "post";
-  if (id) {
-    metodo = "put";
-  }
+  // Determine the method for the fetch request
+  const method = id ? "put" : "post";
 
-  //criando a função handleSubmit
+  // Handle form submission
   const handleSubmit = (e) => {
-    //Previne qualquer alteração na pagina (ex. Load)
+    e.preventDefault();
     alert("User created successfully.");
 
-    e.preventDefault();
-
     fetch(`http://localhost:5000/users/${id ? id : ""}`, {
-      method: metodo,
+      method,
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(users),
-      //promises
     }).then(() => {
-      //direciona para o componente
       const token =
         Math.random().toString(16).substring(2) +
         Math.random().toString(16).substring(2);
@@ -103,4 +87,5 @@ const user = () => {
     </div>
   );
 };
-export default user;
+
+export default User;

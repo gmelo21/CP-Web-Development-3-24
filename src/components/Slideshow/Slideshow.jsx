@@ -51,7 +51,7 @@ function Slideshow() {
 
       <div className="slideImage">
         {slides.map((url) => (
-          <img src={url} style={{ translate: `${-200 * currentIndex}%` }} />
+          <img key={url} src={url} style={{ translate: `${-200 * currentIndex}%` }} />
         ))}
       </div>
 

@@ -33,15 +33,13 @@ const CustomCard = (props) => {
           )}
           <h4 className="card-price">${props.value}</h4>
         </div>
-        {props.onStock ? (
-          <Button className="dropdown-basic" variant="success">
-            Buy it
-          </Button>
-        ) : (
-          <Button id="off-button" className="dropdown-basic" variant="primary">
-            Buy it
-          </Button>
-        )}
+        <Button
+          className="dropdown-basic"
+          variant={props.onStock ? "success" : "primary"}
+          id={!props.onStock ? "off-button" : undefined}
+        >
+          Buy it
+        </Button>
       </Card.Body>
     </Card>
   );
