@@ -9,13 +9,13 @@
     var(--ourBlackButton) 85%,
     rgb(0, 0, 0, 0.2)
   );
-  border-bottom: var(--ourBlack) solid 10px;
+  border-bottom: var(--ourBlack) solid 30px;
 }
 
 .slideImage {
   display: flex;
   overflow: hidden;
-  padding: 0px 15%;
+  padding-inline: 15%;
 }
 
 .slideImage img {
@@ -63,4 +63,30 @@
 
 .nextSlide:last-of-type {
   right: 11%;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 9px;
+  margin-bottom: -21px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin-inline: 5px;
+  background-color: var(--ourWhite);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dot:hover {
+  background-color: var(--ourActiveWhite);
+}
+
+.dot.active {
+  background-color: var(--ourGreen);
 }

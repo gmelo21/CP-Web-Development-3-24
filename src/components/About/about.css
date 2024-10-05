@@ -1,0 +1,35 @@
+.accordion {
+  --bs-accordion-btn-bg: var(--ourGreen);
+  --bs-accordion-btn-color: var(--ourWhite);
+  --bs-accordion-bg: var(--ourBlackButton);
+  --bs-accordion-color: var(--ourWhite);
+  --bs-accordion-border-color: var(--ourWhite);
+  --bs-accordion-border-radius: 0px;
+  --bs-accordion-active-bg: var(--ourFocusGreen);
+  --bs-accordion-active-color: var(--ourWhite);
+  --bs-accordion-btn-focus-box-shadow: none;
+  margin-inline: -5%;
+  border: none;
+}
+
+.accordion-button::after {
+    filter: brightness(100);
+}
+
+.accordion-header:hover {
+  --bs-accordion-btn-bg: var(--ourActiveGreen);
+}
+
+.accordion-name:hover {
+  --bs-accordion-active-bg: var(--ourActiveGreen);
+}
+
+.accordion-name {
+  margin-top: -10px;
+}
+
+#accordion-end {
+  --bs-accordion-inner-border-radius: 0px;
+  margin-top: 10px;
+  border-bottom: 0px;
+}

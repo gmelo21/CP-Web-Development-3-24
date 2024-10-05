@@ -1,20 +1,25 @@
-.home-section { 
-    padding: 1% 10% 0%;
-    text-align: center;
+.home-section {
+  padding: 1% 10% 0%;
+  text-align: center;
 }
 
-.home-description { 
-    background-color: rgb(25, 135, 84);
-    padding: 10px 40px;
-    text-align: center;
-    border-radius: 10px;
-    color: var(--ourWhite);
-    font-weight: 600;
-    font-size: 1.7rem;
+.home-description {
+  background-color: rgb(25, 135, 84);
+  padding: 10px 40px;
+  margin: 0% -5%;
+  text-align: center;
+  border-radius: 10px;
+  color: var(--ourWhite);
+  font-weight: 600;
+  font-size: 1.7rem;
 }
 
 .card-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about-section {
+    margin-top: 1%;
 }

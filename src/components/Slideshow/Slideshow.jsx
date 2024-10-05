@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./slideshow.css";
 import slide1 from "../../assets/slide1.jpg";
 import slide2 from "../../assets/slide2.jpg";
@@ -10,6 +10,19 @@ const slides = [slide3, slide2, slide1];
 
 function Slideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoAdvancing, setIsAutoAdvancing] = useState(true);
+
+  useEffect(() => {
+    let slideInterval;
+
+    if (isAutoAdvancing) {
+      slideInterval = setInterval(() => {
+        nextSlide();
+      }, 3000);
+    }
+
+    return () => clearInterval(slideInterval);
+  }, [isAutoAdvancing, currentIndex]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -21,9 +34,14 @@ function Slideshow() {
     );
   };
 
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+    setIsAutoAdvancing(false);
+  };
+
   return (
     <div className="slideshow">
-      <SlArrowLeft className="nextSlide" onClick={prevSlide}></SlArrowLeft>
+      <SlArrowLeft className="nextSlide" onClick={prevSlide} />
 
       <div className="slideImage">
         {slides.map((url) => (
@@ -31,7 +49,17 @@ function Slideshow() {
         ))}
       </div>
 
-      <SlArrowRight className="nextSlide" onClick={nextSlide}></SlArrowRight>
+      <SlArrowRight className="nextSlide" onClick={nextSlide} />
+
+      <div className="dots">
+        {slides.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${currentIndex === index ? "active" : ""}`}
+            onClick={() => goToSlide(index)}
+          ></span>
+        ))}
+      </div>
     </div>
   );
 }

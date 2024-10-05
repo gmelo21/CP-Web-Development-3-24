@@ -4,33 +4,40 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 const Header = () => {
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("usuario");
-    sessionStorage.removeItem("senha");
-    navigate("/login"); // Redireciona para a página de login
-  };
-
   const isLoggedIn = sessionStorage.getItem("usuario") !== null;
+
+  // Move scrollToSection inside Header component
+  const scrollToSection = (id) => {
+    navigate("/"); // Navigate to home page
+    setTimeout(() => {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 0);
+  };
 
   return (
     <nav>
-      <div className="dropdown-basic" style={{ backgroundColor: 'transparent' }}></div>
+      <div
+        className="dropdown-basic"
+        style={{ backgroundColor: "transparent" }}
+      ></div>
       <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/products">Produtos</Link>
+          <Link onClick={() => scrollToSection("card-section")}>Products</Link>
         </li>
         <div className="logo">
           <h1>C-FREE</h1>
         </div>
         <li>
-          <Link to="/about">Sobre</Link>
+          <Link onClick={() => scrollToSection("about-section")}>About Us</Link>
         </li>
         <li>
-          <Link to="/login">Loja</Link>
+          <Link to="/error">Shop</Link>
         </li>
       </ul>
       <Dropdown>

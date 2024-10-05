@@ -1,7 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
 import "./home.css";
 import Slideshow from "../Slideshow/Slideshow";
 import Card from "../Card/Card";
+import About from "../About/About";
 import product1 from "../../assets/product1.jpeg";
 import product2 from "../../assets/product2.webp";
 import product3 from "../../assets/product3.avif";
@@ -18,7 +18,7 @@ const Home = () => {
           temporibus labore ipsa impedit dolorum necessitatibus quibusdam
           blanditiis! Animi corporis itaque ipsam voluptas quidem!
         </p>
-        <div className="card-section">
+        <div id="card-section" className="card-section">
           <Card
             productImage={product3}
             imageAlt="Sample Product"
@@ -67,6 +67,9 @@ const Home = () => {
             onStock={false}
             value={69.99}
           />
+        </div>
+        <div id="about-section" className="about-section">
+          <About />
         </div>
       </section>
     </>

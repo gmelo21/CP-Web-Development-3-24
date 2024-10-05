@@ -6,7 +6,7 @@ nav {
   position: sticky;
   padding-bottom: 10px;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 }
 
 nav ul {
@@ -22,7 +22,7 @@ nav ul li {
 }
 
 nav ul li a {
-  margin: 0px 10px;
+  margin-inline: 10px;
   width: 90px;
   padding: 5px 10px;
   display: inline-block;
@@ -46,7 +46,7 @@ nav ul li a:active {
 
 .logo {
   border-radius: 0px 0px 10px 10px;
-  padding: 0px 10px;
+  padding-inline: 10px;
   background-color: var(--ourGreen);
   color: var(--ourWhite);
 }
@@ -56,7 +56,7 @@ nav ul li a:active {
 }
 
 .dropdown-basic {
-  margin: 0px 10px;
+  margin-inline: 10px;
   width: 90px;
   padding: 5px 10px;
   display: inline-block;
