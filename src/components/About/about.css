@@ -14,7 +14,7 @@
 }
 
 .accordion-button::after {
-    filter: brightness(100);
+  filter: brightness(100);
 }
 
 .accordion-header:hover {
@@ -36,7 +36,22 @@
 }
 
 .accordion-button:not(.collapsed) {
-    color: var(--bs-accordion-active-color);
-    background-color: var(--bs-accordion-active-bg);
-    box-shadow: outset 0 calc(-1* var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+  box-shadow: outset 0 calc(-1 * var(--bs-accordion-border-width)) 0
+    var(--bs-accordion-border-color);
+}
+
+.accordion-description {
+  padding-top: 10px;
+}
+
+.social-icon {
+  margin-inline: 10px;
+  font-size: 40px;
+  cursor: pointer;
+  color: var(--ourWhite);
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  color: var(--ourActiveWhite);
 }

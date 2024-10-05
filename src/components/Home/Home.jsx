@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import "./home.css";
 import Slideshow from "../Slideshow/Slideshow";
 import Card from "../Card/Card";
@@ -8,6 +9,22 @@ import product3 from "../../assets/product3.avif";
 import product4 from "../../assets/product4.jpg";
 
 const Home = () => {
+  const [userProducts, setUserProducts] = useState([]);
+
+  useEffect(() => {
+    // Load products from localStorage
+    const storedCarros = localStorage.getItem('carros');
+    if (storedCarros) {
+      setUserProducts(JSON.parse(storedCarros));
+    }
+  }, []);
+
+  const handleDeleteUserProduct = (id) => {
+    const updatedProducts = userProducts.filter(carro => carro.id !== id);
+    setUserProducts(updatedProducts);
+    localStorage.setItem('carros', JSON.stringify(updatedProducts)); // Update localStorage
+  };
+
   return (
     <>
       <Slideshow />
@@ -19,55 +36,83 @@ const Home = () => {
           blanditiis! Animi corporis itaque ipsam voluptas quidem!
         </p>
         <div id="card-section" className="card-section">
-          <Card
-            productImage={product3}
-            imageAlt="Sample Product"
-            name="Product 1"
-            productDesc="This is a sample description for Product 1."
-            onStock={true}
-            value={19.99}
-          />
-          <Card
-            productImage={product4}
-            imageAlt="Sample Product"
-            name="Product 2"
-            productDesc="This is a sample description for Product 2."
-            onStock={false}
-            value={29.99}
-          />
-          <Card
-            productImage={product1}
-            imageAlt="Sample Product"
-            name="Product 3"
-            productDesc="This is a sample description for Product 3."
-            onStock={true}
-            value={39.99}
-          />
-          <Card
-            productImage={product4}
-            imageAlt="Sample Product"
-            name="Product 4"
-            productDesc="This is a sample description for Product 4."
-            onStock={true}
-            value={49.99}
-          />
-          <Card
-            productImage={product2}
-            imageAlt="Sample Product"
-            name="Product 5"
-            productDesc="This is a sample description for Product 5."
-            onStock={true}
-            value={59.99}
-          />
-          <Card
-            productImage={product3}
-            imageAlt="Sample Product"
-            name="Product 6"
-            productDesc="This is a sample description for Product 6."
-            onStock={false}
-            value={69.99}
-          />
+          {/* Predefined cards */}
+          {[  
+            {
+              id: 'predefined1',
+              productImage: product1,
+              name: 'Product 3',
+              productDesc: 'This is a sample description for Product 3.',
+              onStock: true,
+              value: 39.99,
+            },
+            {
+              id: 'predefined2',
+              productImage: product2,
+              name: 'Product 5',
+              productDesc: 'This is a sample description for Product 5.',
+              onStock: true,
+              value: 59.99,
+            },
+            {
+              id: 'predefined3',
+              productImage: product3,
+              name: 'Product 1',
+              productDesc: 'This is a sample description for Product 1.',
+              onStock: true,
+              value: 19.99,
+            },
+            {
+              id: 'predefined4',
+              productImage: product4,
+              name: 'Product 4',
+              productDesc: 'This is a sample description for Product 4.',
+              onStock: true,
+              value: 49.99,
+            },
+            {
+              id: 'predefined5',
+              productImage: product4,
+              name: 'Product 2',
+              productDesc: 'This is a sample description for Product 2.',
+              onStock: false,
+              value: 29.99,
+            },
+            {
+              id: 'predefined6',
+              productImage: product3,
+              name: 'Product 6',
+              productDesc: 'This is a sample description for Product 6.',
+              onStock: false,
+              value: 69.99,
+            },
+          ].map((predefined) => (
+            <Card
+              key={predefined.id}
+              productImage={predefined.productImage}
+              imageAlt={`Image of ${predefined.name}`}
+              name={predefined.name}
+              productDesc={predefined.productDesc}
+              onStock={predefined.onStock}
+              value={predefined.value}
+            />
+          ))}
+
+          {/* User registered products */}
+          {userProducts.map(carro => (
+            <Card
+              key={carro.id}
+              productImage={carro.productImage}
+              imageAlt={`Image of ${carro.nome}`}
+              name={carro.nome}
+              productDesc={carro.productDesc}
+              onStock={carro.onStock}
+              value={parseFloat(carro.preco)}
+              onDelete={() => handleDeleteUserProduct(carro.id)} // Pass delete function
+            />
+          ))}
         </div>
+
         <div id="about-section" className="about-section">
           <About />
         </div>
@@ -75,4 +120,5 @@ const Home = () => {
     </>
   );
 };
+
 export default Home;

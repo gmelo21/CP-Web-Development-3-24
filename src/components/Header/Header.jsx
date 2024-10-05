@@ -1,14 +1,22 @@
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./header.css";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const Header = () => {
   const navigate = useNavigate();
-  const isLoggedIn = sessionStorage.getItem("usuario") !== null;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Move scrollToSection inside Header component
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      setIsLoggedIn(sessionStorage.getItem("user") !== null);
+    };
+
+    checkLoginStatus();
+  }, []);
+
   const scrollToSection = (id) => {
-    navigate("/"); // Navigate to home page
+    navigate("/");
     setTimeout(() => {
       const section = document.getElementById(id);
       if (section) {
@@ -17,12 +25,22 @@ const Header = () => {
     }, 0);
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("user");
+    sessionStorage.removeItem("password");
+    setIsLoggedIn(false);
+    alert("Logged out successfully!");
+  };
+
+  const handleDeleteAllProducts = () => {
+    localStorage.removeItem("carros"); // Clear all products from localStorage
+    window.location.reload()
+    alert("All products have been deleted!");
+  };
+
   return (
     <nav>
-      <div
-        className="dropdown-basic"
-        style={{ backgroundColor: "transparent" }}
-      ></div>
+      <div className="dropdown-basic" style={{ backgroundColor: "transparent" }}></div>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -42,13 +60,24 @@ const Header = () => {
       </ul>
       <Dropdown>
         <Dropdown.Toggle variant="success" className="dropdown-basic">
-          Conta
+          Account
         </Dropdown.Toggle>
         <Dropdown.Menu className="dropdown-menu">
-          <Dropdown.Item href="#/action-1">Login</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Cadastrar produto</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/login">
+            Login
+          </Dropdown.Item>
           {isLoggedIn && (
-            <Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/register-product">
+              Register Product
+            </Dropdown.Item>
+          )}
+          {isLoggedIn && (
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+          )}
+          {isLoggedIn && (
+            <Dropdown.Item onClick={handleDeleteAllProducts}>
+              Delete All Products
+            </Dropdown.Item>
           )}
         </Dropdown.Menu>
       </Dropdown>
