@@ -46,7 +46,7 @@ const user=()=>{
         //promises
     }).then(()=>{
         //direciona para o componente
-        navigate("/user");
+        navigate("/");
     })
     };
 

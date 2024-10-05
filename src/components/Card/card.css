@@ -44,6 +44,9 @@
   color: var(--ourWhite);
   font-weight: 400;
   font-size: medium;
+  min-height: 70px;
+  max-height: 70px;
+  overflow: hidden;
 }
 
 .card-price {

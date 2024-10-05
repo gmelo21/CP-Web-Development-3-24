@@ -1,34 +1,9 @@
 {
   "users": [
     {
-      "user": "Fiap",
-      "password": "123123",
+      "user": "admin",
+      "password": "123",
       "id": "vr3fe4w"
-    },
-    {
-      "user": "Admin",
-      "password": "cidade",
-      "id": "f438ij"
-    },
-    {
-      "user": "victorcapp",
-      "password": "1111",
-      "id": "84h3f3i"
-    },
-    {
-      "user": "Cidade",
-      "password": "FrontWeb",
-      "id": "okd90sz"
-    },
-    {
-      "user": "userx",
-      "password": "7777",
-      "id": "943fj9"
-    },
-    {
-      "id": "a143",
-      "user": "1",
-      "password": "1"
     }
   ]
 }
