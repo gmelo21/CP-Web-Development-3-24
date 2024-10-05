@@ -41,7 +41,13 @@ function Slideshow() {
 
   return (
     <div className="slideshow">
-      <SlArrowLeft className="nextSlide" onClick={prevSlide} />
+      <SlArrowLeft
+        className="nextSlide"
+        onClick={() => {
+          prevSlide();
+          setIsAutoAdvancing(false);
+        }}
+      />
 
       <div className="slideImage">
         {slides.map((url) => (
@@ -49,7 +55,13 @@ function Slideshow() {
         ))}
       </div>
 
-      <SlArrowRight className="nextSlide" onClick={nextSlide} />
+      <SlArrowRight
+        className="nextSlide"
+        onClick={() => {
+          nextSlide();
+          setIsAutoAdvancing(false);
+        }}
+      />
 
       <div className="dots">
         {slides.map((_, index) => (
