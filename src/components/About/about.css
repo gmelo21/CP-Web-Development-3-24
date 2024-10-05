@@ -8,6 +8,7 @@
   --bs-accordion-active-bg: var(--ourFocusGreen);
   --bs-accordion-active-color: var(--ourWhite);
   --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-border-width: 1px;
   margin-inline: -5%;
   border: none;
 }
@@ -32,4 +33,10 @@
   --bs-accordion-inner-border-radius: 0px;
   margin-top: 10px;
   border-bottom: 0px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--bs-accordion-active-color);
+    background-color: var(--bs-accordion-active-bg);
+    box-shadow: outset 0 calc(-1* var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
 }
