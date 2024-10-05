@@ -28,18 +28,21 @@ const Header = () => {
     sessionStorage.removeItem("user");
     sessionStorage.removeItem("password");
     setIsLoggedIn(false);
-    alert("Logged out successfully!");
+    alert("Logged out successfully.");
   };
 
   const handleDeleteAllProducts = () => {
-    localStorage.removeItem("carros"); // Clear all products from localStorage
-    alert("All products have been deleted!");
+    localStorage.removeItem("vehicles");
+    alert("All products have been deleted.");
     window.location.reload();
   };
 
   return (
     <nav>
-      <div className="dropdown-basic" style={{ backgroundColor: "transparent" }}></div>
+      <div
+        className="dropdown-basic"
+        style={{ backgroundColor: "transparent" }}
+      ></div>
       <ul>
         <li>
           <Link to="/">Home</Link>

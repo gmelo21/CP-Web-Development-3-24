@@ -4,42 +4,31 @@ import "./registerproduct.css";
 
 const RegisterProduct = () => {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
-  const [newProduct, setNewProduct] = useState({
+  const [vehicles, setVehicle] = useState([]);
+  const [newVehicle, setNewVehicle] = useState({
     id: null,
     name: "",
     price: "",
-    manufacturer: "",
     productImage: "",
     productDesc: "",
     onStock: true,
   });
   const [editingId, setEditingId] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [productToDelete, setProductToDelete] = useState(null);
 
   useEffect(() => {
-    const storedProducts = localStorage.getItem("products");
-    if (storedProducts) {
-      setProducts(JSON.parse(storedProducts));
+    const storedVehicle = localStorage.getItem("vehicles");
+    if (storedVehicle) {
+      setVehicle(JSON.parse(storedVehicle));
     }
   }, []);
 
-  const saveProductsToLocalStorage = (products) => {
-    localStorage.setItem("products", JSON.stringify(products));
-  };
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("password");
-    sessionStorage.removeItem("user");
-    alert("Logging out...");
-    navigate("/");
+  const saveVehicleToLocalStorage = (vehicles) => {
+    localStorage.setItem("vehicles", JSON.stringify(vehicles));
   };
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setNewProduct((prev) => ({
+    setNewVehicle((prev) => ({
       ...prev,
       [name]:
         type === "checkbox"
@@ -55,7 +44,7 @@ const RegisterProduct = () => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setNewProduct((prev) => ({ ...prev, productImage: reader.result }));
+        setNewVehicle((prev) => ({ ...prev, productImage: reader.result }));
       };
       reader.readAsDataURL(file);
     }
@@ -63,62 +52,35 @@ const RegisterProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let updatedProducts;
+    let updatedVehicle;
 
     if (editingId !== null) {
-      updatedProducts = products.map((product) =>
-        product.id === editingId ? { ...newProduct, id: editingId } : product
+      updatedVehicle = vehicles.map((vehicle) =>
+        vehicle.id === editingId ? { ...newVehicle, id: editingId } : vehicle
       );
       setEditingId(null);
     } else {
-      updatedProducts = [...products, { ...newProduct, id: Date.now() }];
+      updatedVehicle = [...vehicles, { ...newVehicle, id: Date.now() }];
     }
 
-    setProducts(updatedProducts);
-    saveProductsToLocalStorage(updatedProducts);
+    setVehicle(updatedVehicle);
+    saveVehicleToLocalStorage(updatedVehicle);
 
-    setNewProduct({
+    setNewVehicle({
       id: null,
       name: "",
       price: "",
-      manufacturer: "",
       productImage: "",
       productDesc: "",
       onStock: true,
     });
 
-    alert("Product added successfully!");
+    alert("Product added successfully.");
+
     navigate("/");
     setTimeout(() => {
       window.location.reload();
     }, 0);
-  };
-
-  const handleEdit = (product) => {
-    setNewProduct(product);
-    setEditingId(product.id);
-  };
-
-  const handleDelete = (product) => {
-    setProductToDelete(product);
-    setShowModal(true);
-  };
-
-  const confirmDelete = () => {
-    const updatedProducts = products.filter((p) => p.id !== productToDelete.id);
-    setProducts(updatedProducts);
-    saveProductsToLocalStorage(updatedProducts);
-    setProductToDelete(null);
-    setShowModal(false);
-  };
-
-  const cancelDelete = () => {
-    setProductToDelete(null);
-    setShowModal(false);
-  };
-
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
   };
 
   return (
@@ -129,7 +91,7 @@ const RegisterProduct = () => {
         <input
           className="input"
           name="name"
-          value={newProduct.name}
+          value={newVehicle.name}
           onChange={handleInputChange}
           placeholder="Name"
           required
@@ -138,20 +100,12 @@ const RegisterProduct = () => {
           className="input"
           name="price"
           type="number"
-          value={newProduct.price}
+          value={newVehicle.price}
           onChange={handleInputChange}
           placeholder="Price"
           required
           min="0"
           step="0.01"
-        />
-        <input
-          className="input"
-          name="manufacturer"
-          value={newProduct.manufacturer}
-          onChange={handleInputChange}
-          placeholder="Manufacturer"
-          required
         />
         <input
           className="input"
@@ -163,7 +117,7 @@ const RegisterProduct = () => {
         <input
           className="input"
           name="productDesc"
-          value={newProduct.productDesc}
+          value={newVehicle.productDesc}
           onChange={handleInputChange}
           placeholder="Product Description"
           required
@@ -172,7 +126,7 @@ const RegisterProduct = () => {
           <input
             type="checkbox"
             name="onStock"
-            checked={newProduct.onStock}
+            checked={newVehicle.onStock}
             onChange={handleInputChange}
           />
           In Stock

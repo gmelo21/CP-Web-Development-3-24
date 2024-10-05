@@ -2,10 +2,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const User = () => {
-  // Hook to receive parameters (id) from the route
   const { id } = useParams();
 
-  // State to manage user information
   const [users, setUsers] = useState({
     id,
     user: "",
@@ -16,18 +14,16 @@ const User = () => {
 
   const showPassword = () => {
     const passwordField = document.getElementById("password-text");
-    passwordField.type = passwordField.type === "password" ? "text" : "password";
+    passwordField.type =
+      passwordField.type === "password" ? "text" : "password";
   };
 
-  // Handle input changes
   const handleChange = (e) => {
     setUsers({ ...users, [e.target.name]: e.target.value });
   };
 
-  // Determine the method for the fetch request
   const method = id ? "put" : "post";
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("User created successfully.");

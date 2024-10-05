@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./home.css";
 import Slideshow from "../Slideshow/Slideshow";
 import Card from "../Card/Card";
@@ -12,17 +12,16 @@ const Home = () => {
   const [userProducts, setUserProducts] = useState([]);
 
   useEffect(() => {
-    // Load products from localStorage
-    const storedCarros = localStorage.getItem('carros');
-    if (storedCarros) {
-      setUserProducts(JSON.parse(storedCarros));
+    const storedVehicles = localStorage.getItem("vehicles");
+    if (storedVehicles) {
+      setUserProducts(JSON.parse(storedVehicles));
     }
   }, []);
 
   const handleDeleteUserProduct = (id) => {
-    const updatedProducts = userProducts.filter(carro => carro.id !== id);
+    const updatedProducts = userProducts.filter((vehicle) => vehicle.id !== id);
     setUserProducts(updatedProducts);
-    localStorage.setItem('carros', JSON.stringify(updatedProducts)); // Update localStorage
+    localStorage.setItem("vehicles", JSON.stringify(updatedProducts));
   };
 
   return (
@@ -36,53 +35,52 @@ const Home = () => {
           blanditiis! Animi corporis itaque ipsam voluptas quidem!
         </p>
         <div id="card-section" className="card-section">
-          {/* Predefined cards */}
-          {[  
+          {[
             {
-              id: 'predefined1',
+              id: "predefined1",
               productImage: product3,
-              name: 'Product 1',
-              productDesc: 'This is a sample description for Product 1.',
+              name: "Product 1",
+              productDesc: "This is a sample description for Product 1.",
               onStock: true,
               value: 39.99,
             },
             {
-              id: 'predefined2',
+              id: "predefined2",
               productImage: product2,
-              name: 'Product 2',
-              productDesc: 'This is a sample description for Product 2.',
+              name: "Product 2",
+              productDesc: "This is a sample description for Product 2.",
               onStock: true,
               value: 59.99,
             },
             {
-              id: 'predefined3',
+              id: "predefined3",
               productImage: product1,
-              name: 'Product 3',
-              productDesc: 'This is a sample description for Product 3.',
+              name: "Product 3",
+              productDesc: "This is a sample description for Product 3.",
               onStock: true,
               value: 19.99,
             },
             {
-              id: 'predefined4',
+              id: "predefined4",
               productImage: product4,
-              name: 'Product 4',
-              productDesc: 'This is a sample description for Product 4.',
+              name: "Product 4",
+              productDesc: "This is a sample description for Product 4.",
               onStock: false,
               value: 49.99,
             },
             {
-              id: 'predefined5',
+              id: "predefined5",
               productImage: product4,
-              name: 'Product 5',
-              productDesc: 'This is a sample description for Product 5.',
+              name: "Product 5",
+              productDesc: "This is a sample description for Product 5.",
               onStock: true,
               value: 29.99,
             },
             {
-              id: 'predefined6',
+              id: "predefined6",
               productImage: product3,
-              name: 'Product 6',
-              productDesc: 'This is a sample description for Product 6.',
+              name: "Product 6",
+              productDesc: "This is a sample description for Product 6.",
               onStock: false,
               value: 69.99,
             },
@@ -97,18 +95,16 @@ const Home = () => {
               value={predefined.value}
             />
           ))}
-
-          {/* User registered products */}
-          {userProducts.map(carro => (
+          {userProducts.map((vehicle) => (
             <Card
-              key={carro.id}
-              productImage={carro.productImage}
-              imageAlt={`Image of ${carro.nome}`}
-              name={carro.nome}
-              productDesc={carro.productDesc}
-              onStock={carro.onStock}
-              value={parseFloat(carro.preco)}
-              onDelete={() => handleDeleteUserProduct(carro.id)} // Pass delete function
+              key={vehicle.id}
+              productImage={vehicle.productImage}
+              imageAlt={`Image of ${vehicle.name}`}
+              name={vehicle.name}
+              productDesc={vehicle.productDesc}
+              onStock={vehicle.onStock}
+              value={parseFloat(vehicle.price)}
+              onDelete={() => handleDeleteUserProduct(vehicle.id)}
             />
           ))}
         </div>

@@ -6,7 +6,7 @@ import { HiOutlineMail } from "react-icons/hi";
 
 function About() {
   return (
-    <Accordion defaultActiveKey="0" alwaysOpen>
+    <Accordion alwaysOpen>
       <Accordion.Item className="accordion-item" eventKey="0">
         <Accordion.Header className="accordion-name">
           Our History
