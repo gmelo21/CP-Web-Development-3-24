@@ -42,7 +42,7 @@ const Login = () => {
       setTimeout(() => {
         window.location.reload();
       }, 0); // Slight delay to ensure navigation is processed
-      alert("Login successful!");
+      alert("Login successful.");
     } else {
       alert("User/Password invalid.");
     }
@@ -57,9 +57,9 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="login-container">
       <div className="login-card">
-        <h2 className="title">Log-in</h2>
+        <h2 className="login-name">Log-in</h2>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="input-container">
             <input
@@ -82,7 +82,7 @@ const Login = () => {
             <input type="checkbox" onClick={showPassword} />
             <p>Show password</p>
           </div>
-          <button type="submit" className="button">
+          <button type="submit" className="dropdown-basic">
             Login
           </button>
         </form>

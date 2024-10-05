@@ -40,12 +40,17 @@ const CadastrarProduto = () => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setNovoCarro(prev => ({
+    setNovoCarro((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : type === 'number' ? parseFloat(value) : value // Parse number input
+      [name]:
+        type === "checkbox"
+          ? checked
+          : type === "number"
+          ? parseFloat(value)
+          : value, // Parse number input
     }));
   };
-  
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -121,13 +126,10 @@ const CadastrarProduto = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Cadastro de Produtos</h1>
-      <button className="logout-btn" onClick={handleLogout}>
-        Logout
-      </button>
+    <div className="registering-product-container">
+      <h1 className="registering-product-title">Cadastro de Produtos</h1>
 
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="registering-product-form" onSubmit={handleSubmit}>
         <input
           className="input"
           name="nome"
@@ -162,7 +164,7 @@ const CadastrarProduto = () => {
           onChange={handleImageChange}
           required
         />
-        <textarea
+        <input
           className="input"
           name="productDesc"
           value={novoCarro.productDesc}
@@ -183,23 +185,6 @@ const CadastrarProduto = () => {
           Salvar
         </button>
       </form>
-
-      <input
-        className="search-input"
-        type="text"
-        placeholder="Buscar..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
-
-      {showModal && (
-        <div className="modal">
-          <h2>Confirmar Exclusão</h2>
-          <p>Você tem certeza que deseja excluir {carroToDelete?.nome}?</p>
-          <button onClick={confirmDelete}>Confirmar</button>
-          <button onClick={cancelDelete}>Cancelar</button>
-        </div>
-      )}
     </div>
   );
 };
