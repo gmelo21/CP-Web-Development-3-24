@@ -57,7 +57,7 @@ const Header = () => {
           <Link onClick={() => scrollToSection("about-section")}>About Us</Link>
         </li>
         <li>
-          <Link to="/error">Shop</Link>
+          <Link to="/address">Address</Link>
         </li>
       </ul>
       <Dropdown>
