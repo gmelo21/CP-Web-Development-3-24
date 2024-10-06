@@ -1,14 +1,19 @@
 {
   "users": [
     {
-      "user": "admin",
-      "password": "123",
-      "id": "vr3fe4w"
-    },
-    {
       "id": "b518",
       "user": "1",
       "password": "1"
+    },
+    {
+      "id": "34c0",
+      "user": "2",
+      "password": "2"
+    },
+    {
+      "id": "e6c3",
+      "user": "3",
+      "password": "3"
     }
   ]
 }

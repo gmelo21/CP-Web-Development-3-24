@@ -31,11 +31,38 @@ const Header = () => {
     alert("Logged out successfully.");
   };
 
-  const handleDeleteAllProducts = () => {
-    localStorage.removeItem("vehicles");
-    alert("All products have been deleted.");
-    window.location.reload();
+  const handleDeleteProduct = () => {
+    const productName = prompt("Enter the name of the product to delete:");
+    if (!productName) return;
+  
+    const loggedInUser = sessionStorage.getItem("user");
+    const storedVehicles = JSON.parse(localStorage.getItem("vehicles")) || [];
+    let productFound = false;
+    let canDelete = false;
+  
+    const filteredVehicles = storedVehicles.filter((vehicle) => {
+      if (vehicle.name.toLowerCase() === productName.toLowerCase()) {
+        productFound = true;
+        if (vehicle.user !== loggedInUser) {
+          alert("You can only delete your own products.");
+          return true;
+        } else {
+          canDelete = true;
+          return false;
+        }
+      }
+      return true;
+    });
+  
+    if (!productFound) {
+      alert("Product not found.");
+    } else if (canDelete) {
+      localStorage.setItem("vehicles", JSON.stringify(filteredVehicles));
+      alert("Product deleted successfully.");
+      window.location.reload();
+    }
   };
+  
 
   return (
     <nav>
@@ -74,8 +101,8 @@ const Header = () => {
                 Register Product
               </Dropdown.Item>
               <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-              <Dropdown.Item onClick={handleDeleteAllProducts}>
-                Delete All Products
+              <Dropdown.Item onClick={handleDeleteProduct}>
+                Delete Product
               </Dropdown.Item>
             </>
           )}

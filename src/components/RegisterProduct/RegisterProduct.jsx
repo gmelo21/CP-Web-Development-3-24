@@ -53,15 +53,21 @@ const RegisterProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const loggedInUser = sessionStorage.getItem("user"); // Get the logged-in user
     let updatedVehicle;
 
     if (editingId !== null) {
       updatedVehicle = vehicles.map((vehicle) =>
-        vehicle.id === editingId ? { ...newVehicle, id: editingId } : vehicle
+        vehicle.id === editingId
+          ? { ...newVehicle, id: editingId, user: loggedInUser }
+          : vehicle
       );
       setEditingId(null);
     } else {
-      updatedVehicle = [...vehicles, { ...newVehicle, id: Date.now() }];
+      updatedVehicle = [
+        ...vehicles,
+        { ...newVehicle, id: Date.now(), user: loggedInUser },
+      ];
     }
 
     setVehicle(updatedVehicle);
@@ -77,7 +83,6 @@ const RegisterProduct = () => {
     });
 
     alert("Product added successfully.");
-
     navigate("/");
     setTimeout(() => {
       window.location.reload();
