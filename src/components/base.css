@@ -1,9 +1,34 @@
-:root{
-    --ourGreen: rgb(25, 135, 84);
-    --ourActiveGreen: rgb(22, 119, 74);
-    --ourFocusGreen: rgb(18, 97, 60);
-    --ourWhite:rgb(245, 245, 245);
-    --ourActiveWhite:rgb(195, 195, 195);
-    --ourBlack:rgb(20, 20, 20);
-    --ourBlackButton:rgba(34, 34, 34);
+:root {
+  --ourGreen: rgb(25, 135, 84);
+  --ourActiveGreen: rgb(22, 119, 74);
+  --ourFocusGreen: rgb(18, 97, 60);
+  --ourWhite: rgb(245, 245, 245);
+  --ourActiveWhite: rgb(195, 195, 195);
+  --ourBlack: rgb(20, 20, 20);
+  --ourBlackButton: rgba(34, 34, 34);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#header-page {
+  height: 100%;
+}
+
+#main-page {
+  flex: 1;
+  position: relative;
+}
+
+#footer-page {
+  height: 100%;
 }

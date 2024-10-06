@@ -3,9 +3,9 @@ nav {
   background-color: var(--ourBlack);
   align-items: center;
   justify-content: space-between;
-  position: sticky;
   padding-bottom: 10px;
   width: 100%;
+  padding-inline: 20px;
   z-index: 100;
 }
 
@@ -66,7 +66,6 @@ nav ul li a:active {
   border: 0px solid;
   transition: 0.2s;
   margin-top: 8px;
-  margin-right: 20px;
   background-color: var(--ourGreen);
 }
 

@@ -55,3 +55,7 @@
 .social-icon:hover {
   color: var(--ourActiveWhite);
 }
+
+.accordion-button:active {
+  background-color: var(--ourFocusGreen);
+}

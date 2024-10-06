@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./createaccount.css";
 
-const User = () => {
+const CreateAccount = () => {
   const { id } = useParams();
 
   const [users, setUsers] = useState({
@@ -26,6 +27,12 @@ const User = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (users.user.trim() === "" || users.password.trim() === "") {
+      alert("Please enter both a username and a password.");
+      return;
+    }
+
     alert("User created successfully.");
 
     fetch(`http://localhost:5000/users/${id ? id : ""}`, {
@@ -46,10 +53,10 @@ const User = () => {
   };
 
   return (
-    <div className="registering-account-container">
-      <div className="registering-account-card">
-        <h2 className="registering-account-name">Log-in</h2>
-        <form className="registering-account-form" onSubmit={handleSubmit}>
+    <div className="create-account-container">
+      <div className="create-account-card">
+        <h2 className="create-account-name">Create Account</h2>
+        <form className="create-account-form" onSubmit={handleSubmit}>
           <div className="input-container">
             <input
               type="text"
@@ -71,7 +78,7 @@ const User = () => {
               className="input"
             />
           </div>
-          <div id="password-checkbox" className="input-container">
+          <div id="create-account-checkbox" className="input-container">
             <input type="checkbox" onClick={showPassword} />
             <p>Show password</p>
           </div>
@@ -84,4 +91,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default CreateAccount;

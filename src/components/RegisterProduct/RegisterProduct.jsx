@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Card from "../Card/Card";
 import "./registerproduct.css";
 
 const RegisterProduct = () => {
@@ -84,57 +85,73 @@ const RegisterProduct = () => {
   };
 
   return (
-    <div className="registering-product-container">
-      <h1 className="registering-product-title">Product Registration</h1>
-
-      <form className="registering-product-form" onSubmit={handleSubmit}>
-        <input
-          className="input"
-          name="name"
-          value={newVehicle.name}
-          onChange={handleInputChange}
-          placeholder="Name"
-          required
-        />
-        <input
-          className="input"
-          name="price"
-          type="number"
-          value={newVehicle.price}
-          onChange={handleInputChange}
-          placeholder="Price"
-          required
-          min="0"
-          step="0.01"
-        />
-        <input
-          className="input"
-          type="file"
-          accept="image/*"
-          onChange={handleImageChange}
-          required
-        />
-        <input
-          className="input"
-          name="productDesc"
-          value={newVehicle.productDesc}
-          onChange={handleInputChange}
-          placeholder="Product Description"
-          required
-        />
-        <label>
-          <input
-            type="checkbox"
-            name="onStock"
-            checked={newVehicle.onStock}
-            onChange={handleInputChange}
-          />
-          In Stock
-        </label>
-        <button type="submit" className="button">
-          Save
-        </button>
-      </form>
+    <div className="register-product-container">
+      <div className="register-product-card">
+        <h1 className="register-product-name">Product Registration</h1>
+        <form className="register-product-form" onSubmit={handleSubmit}>
+          <div className="input-container">
+            <input
+              className="input"
+              name="name"
+              value={newVehicle.name}
+              onChange={handleInputChange}
+              placeholder="Name"
+              required
+            />
+          </div>
+          <div className="input-container">
+            <input
+              className="input"
+              name="price"
+              type="number"
+              value={newVehicle.price}
+              onChange={handleInputChange}
+              placeholder="Price"
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div className="input-container">
+            <input
+              className="input"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <input
+              className="input"
+              name="productDesc"
+              value={newVehicle.productDesc}
+              onChange={handleInputChange}
+              placeholder="Product Description"
+              required
+            />
+          </div>
+          <div id="register-product-checkbox">
+            <input
+              type="checkbox"
+              name="onStock"
+              checked={newVehicle.onStock}
+              onChange={handleInputChange}
+            />
+            <p>In Stock</p>
+          </div>
+          <button type="submit" className="dropdown-basic">
+            Save
+          </button>
+        </form>
+      </div>
+      <Card
+        name={newVehicle.name}
+        productDesc={newVehicle.productDesc}
+        value={newVehicle.price ? newVehicle.price : ""}
+        productImage={newVehicle.productImage}
+        onStock={newVehicle.onStock}
+      />
     </div>
   );
 };

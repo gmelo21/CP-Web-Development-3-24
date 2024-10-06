@@ -6,9 +6,17 @@ import "./components/base.css";
 function App() {
   return (
     <>
-      <Header />
-      <Outlet />
-      <Footer />
+      <div id="container-page">
+        <div id="header-page">
+          <Header/>
+        </div>
+        <div id="main-page">
+          <Outlet id="outlet-page" />
+        </div>
+        <div id="footer-page">
+          <Footer />
+        </div>
+      </div>
     </>
   );
 }

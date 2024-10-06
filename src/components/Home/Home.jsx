@@ -32,7 +32,11 @@ const Home = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
           corrupti? Voluptatem, quasi repudiandae voluptates odit aliquid
           temporibus labore ipsa impedit dolorum necessitatibus quibusdam
-          blanditiis! Animi corporis itaque ipsam voluptas quidem!
+          blanditiis! Animi corporis itaque ipsam voluptas quidem! Lorem ipsum,
+          dolor sit amet consectetur adipisicing elit. Dolor consequatur laborum
+          fugiat provident, aliquam, recusandae cupiditate quis voluptatibus
+          itaque, iusto eos. Tenetur quae temporibus repellendus nesciunt
+          perspiciatis id eveniet! Quasi.
         </p>
         <div id="card-section" className="card-section">
           {[

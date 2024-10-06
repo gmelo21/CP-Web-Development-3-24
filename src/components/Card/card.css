@@ -30,11 +30,16 @@
 }
 
 .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 5px 15px;
 }
 
 .card-name {
   color: var(--ourWhite);
+  line-height: 1.25;
+  min-height: 1.25em;
 }
 
 .card-description {
@@ -71,4 +76,8 @@
 
 #off-image {
   filter: grayscale(100%);
+}
+
+.dropdown-basic {
+  align-self: center;
 }
