@@ -109,12 +109,13 @@ const RegisterProduct = () => {
               className="input"
               name="price"
               type="number"
+              maxlength="5"
               value={newVehicle.price}
               onChange={handleInputChange}
               placeholder="Price"
               required
-              min="0"
               step="0.01"
+              min="0"
             />
           </div>
           <div className="input-container">

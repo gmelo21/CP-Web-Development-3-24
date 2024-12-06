@@ -31,7 +31,12 @@ const CustomCard = (props) => {
           ) : (
             <h4 className="outStock">Out of Stock</h4>
           )}
-          <h4 className="card-price">${props.value}</h4>
+          <h4
+            className="card-price"
+            title={`$${props.value}`} // Tooltip shows full price
+          >
+            ${props.value}
+          </h4>
         </div>
         <Button
           className="dropdown-basic"

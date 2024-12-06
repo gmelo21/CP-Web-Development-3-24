@@ -76,7 +76,9 @@ const Login = () => {
           </button>
         </form>
         <ul className="utilities">
-          <li className="utility-text">Forgot your password?</li>
+        <li className="utility-text">
+            <Link to="">Forgot your password?</Link>
+          </li>
           <li className="utility-text">
             <Link to="/create-account">Create account</Link>
           </li>

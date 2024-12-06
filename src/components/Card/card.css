@@ -58,6 +58,15 @@
   color: var(--ourWhite);
   font-size: 2rem;
   line-height: 30px;
+  max-width: 8ch;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.card-price:hover {
+  color: var(--ourActiveWhite);
 }
 
 .card-info {

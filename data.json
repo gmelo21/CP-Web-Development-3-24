@@ -1,19 +1,9 @@
 {
   "users": [
     {
-      "id": "b518",
+      "id": "4064",
       "user": "1",
       "password": "1"
-    },
-    {
-      "id": "34c0",
-      "user": "2",
-      "password": "2"
-    },
-    {
-      "id": "e6c3",
-      "user": "3",
-      "password": "3"
     }
   ]
 }
