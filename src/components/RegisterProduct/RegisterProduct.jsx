@@ -53,7 +53,7 @@ const RegisterProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const loggedInUser = sessionStorage.getItem("user"); // Get the logged-in user
+    const loggedInUser = sessionStorage.getItem("user");
     let updatedVehicle;
 
     if (editingId !== null) {
